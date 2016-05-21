@@ -1,0 +1,7 @@
+default:
+   autoload:
+      '': %paths.base%/acceptance/bootstrap
+   suites:
+      defaults:
+         paths:
+            - %paths.base%/acceptance
