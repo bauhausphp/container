@@ -1,0 +1,11 @@
+language: php
+
+php:
+   - 7.0
+
+install:
+   - composer install
+
+script:
+   - vendor/bin/phpunit -c tests/phpunit.xml
+   - vendor/bin/behat --config tests/behat.yml
