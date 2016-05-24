@@ -5,7 +5,12 @@ php:
 
 install:
    - composer install
+   - composer require satooshi/php-coveralls:1.*
 
 script:
-   - vendor/bin/phpunit -c tests/phpunit.xml
+   - vendor/bin/phpunit -c tests/phpunit.xml --coverage-clover tests/logs/clover.xml
    - vendor/bin/behat --config tests/behat.yml
+
+after_success:
+   - mkdir -p build/logs
+   - vendor/bin/coveralls -v --coverage_clover=tests/logs/clover.xml
