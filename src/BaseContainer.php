@@ -7,16 +7,16 @@ use \Bauhaus\Container\Exception\ContainerItemAlreadyExistsException;
 
 abstract class BaseContainer
 {
-    private $container = [];
+    private $items = [];
 
     final protected function _register(string $itemName, $itemValue)
     {
-        $this->container[$itemName] = $itemValue;
+        $this->items[$itemName] = $itemValue;
     }
 
     final protected function _has(string $itemName): bool
     {
-        return array_key_exists($itemName, $this->container);
+        return array_key_exists($itemName, $this->items);
     }
 
     final protected function _get(string $itemName)
@@ -25,6 +25,6 @@ abstract class BaseContainer
             throw new ContainerItemNotFoundException($itemName);
         }
 
-        return $this->container[$itemName];
+        return $this->items[$itemName];
     }
 }
