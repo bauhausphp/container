@@ -29,7 +29,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @Given a readable container with the follow items:
      */
-    public function aReadableContainerWithData(TableNode $itemsData)
+    public function aReadableContainerWithTheFollowItems(TableNode $itemsData)
     {
         $items = [];
         foreach ($itemsData as $data) {
@@ -42,7 +42,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @When I verify if the container has the item :itemName
      */
-    public function IVerifyIfTheContainerHasAnItemByGivenAName($itemName)
+    public function iVerifyIfTheContainerHasTheItem($itemName)
     {
         $this->outcome = $this->container->has($itemName);
     }
@@ -50,7 +50,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @When I request the container for the value of the item :itemName
      */
-    public function IRequestTheContainerForTheValueOfTheItemWithName($itemName)
+    public function iRequestTheContainerForTheValueOfTheItem($itemName)
     {
         try {
             $this->outcome = $this->container->get($itemName);
@@ -62,7 +62,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @When I request magically the container for the value of the item :itemName
      */
-    public function IRequestMagicallyTheContainerForTheValueOfTheItemWithName($itemName)
+    public function iRequestMagicallyTheContainerForTheValueOfTheItem($itemName)
     {
         try {
             $this->outcome = $this->container->{$itemName};
@@ -74,7 +74,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @Then I should receive :expected
      */
-    public function IShouldReceive($expected)
+    public function iShouldReceive($expected)
     {
         assertEquals($expected, $this->outcome);
     }
@@ -82,7 +82,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @Then I should receive the exception :exceptionClassName
      */
-    public function IShouldReceiveTheException($exceptionClassName)
+    public function iShouldReceiveTheException($exceptionClassName)
     {
         assertInstanceOf(
             "Bauhaus\\Container\\Exception\\$exceptionClassName",
