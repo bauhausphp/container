@@ -35,18 +35,18 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider namesAndValuesOfExistingItems
      */
-    public function retrieveTheValueOfExistingItemByItsName($itemName, $itemValue)
+    public function retrieveTheValueOfExistingItemByItsName($itemName, $expectedItemValue)
     {
-        $this->assertEquals($itemValue, $this->container->get($itemName));
+        $this->assertEquals($expectedItemValue, $this->container->get($itemName));
     }
 
     /**
      * @test
      * @dataProvider namesAndValuesOfExistingItems
      */
-    public function retrieveMagicallyTheValueOfExistingItemByItsName($itemName, $itemValue)
+    public function retrieveMagicallyTheValueOfExistingItemByItsName($itemName, $expectedItemValue)
     {
-        $this->assertEquals($itemValue, $this->container->{$itemName});
+        $this->assertEquals($expectedItemValue, $this->container->{$itemName});
     }
 
     public function namesAndValuesOfExistingItems()
