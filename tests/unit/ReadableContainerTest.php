@@ -118,7 +118,7 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
     public function retrieveEachItemWhenItIsIterated()
     {
         $outcome = [];
-        foreach($this->container as $itemName => $itemValue) {
+        foreach ($this->container as $itemName => $itemValue) {
             $outcome[$itemName] = $itemValue;
         }
 
