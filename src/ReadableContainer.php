@@ -23,4 +23,29 @@ abstract class ReadableContainer extends BaseContainer implements Readable, Iter
     {
         return $this->_all();
     }
+
+    public function current()
+    {
+        return $this->_iteratorCurrent();
+    }
+
+    public function key()
+    {
+        return $this->_iteratorKey();
+    }
+
+    public function next()
+    {
+        return $this->_iteratorNext();
+    }
+
+    public function rewind()
+    {
+        $this->_iteratorRewind();
+    }
+
+    public function valid()
+    {
+        return $this->_iteratorValid();
+    }
 }

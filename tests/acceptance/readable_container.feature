@@ -78,3 +78,12 @@ Feature: Readable container to keep data accessible, but also safe
          | pirate     | Barbossa   |
          | music      | Right Now  |
          | instrument | Bass       |
+
+   Scenario: Using the given container as iterator in a foreach statment
+      When I use the container as iterator in a foreach statment
+      Then I should receive an array with the follow data:
+         | name       | value      |
+         | pokemon    | Charmander |
+         | pirate     | Barbossa   |
+         | music      | Right Now  |
+         | instrument | Bass       |

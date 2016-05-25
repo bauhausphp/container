@@ -32,4 +32,29 @@ abstract class BaseContainer
     {
         return $this->items;
     }
+
+    final protected function _iteratorCurrent()
+    {
+        return $this->_get($this->_iteratorKey());
+    }
+
+    final protected function _iteratorKey()
+    {
+        return key($this->items);
+    }
+
+    final protected function _iteratorNext()
+    {
+        return next($this->items);
+    }
+
+    final protected function _iteratorRewind()
+    {
+        reset($this->items);
+    }
+
+    final protected function _iteratorValid()
+    {
+        return key($this->items) !== null;
+    }
 }

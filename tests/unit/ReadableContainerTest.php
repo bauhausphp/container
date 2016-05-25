@@ -111,4 +111,17 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
             $this->container->all()
         );
     }
+
+    /**
+     * @test
+     */
+    public function retrieveEachItemWhenItIsIterated()
+    {
+        $outcome = [];
+        foreach($this->container as $itemName => $itemValue) {
+            $outcome[$itemName] = $itemValue;
+        }
+
+        $this->assertEquals($this->readableContainerItems(), $outcome);
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace Bauhaus\Container;
 
-interface Iterator
+interface Iterator extends \Iterator
 {
     public function all(): array;
 }

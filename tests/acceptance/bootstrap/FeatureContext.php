@@ -97,6 +97,17 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @When I use the container as iterator in a foreach statment
+     */
+    public function iUseTheContainerAsIteratorInAForeachStatment()
+    {
+        $this->outcome = [];
+        foreach ($this->container as $itemName => $itemValue) {
+            $this->outcome[$itemName] = $itemValue;
+        }
+    }
+
+    /**
      * @Then I should receive an array with the follow data:
      */
     public function iShouldReceiveAnArrayWithTheFollowData(TableNode $itemsData)
