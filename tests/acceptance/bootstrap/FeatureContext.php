@@ -19,8 +19,10 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function castStringToBoolean($string)
     {
-        if ($string == 'true')
+        if ($string == 'true') {
             return true;
+        }
+
         return false;
     }
 
