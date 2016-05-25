@@ -51,14 +51,9 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
 
     public function namesAndValuesOfExistingItems()
     {
-        $items = $this->readableContainerItems();
-
-        $data = [];
-        foreach ($items as $name => $value) {
-            $data[] = [$name, $value];
+        foreach ($this->readableContainerItems() as $name => $value) {
+            yield [$name, $value];
         }
-
-        return $data;
     }
 
     /**
