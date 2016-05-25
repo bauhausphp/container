@@ -27,4 +27,9 @@ abstract class BaseContainer
 
         return $this->items[$itemName];
     }
+
+    final protected function _all(): array
+    {
+        return $this->items;
+    }
 }

@@ -8,12 +8,18 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $items = [];
-        foreach ($this->namesAndValuesOfExistingItems() as $data) {
-            $items[$data[0]] = $data[1];
-        }
+        $this->container = new FakeReadableContainer($this->readableContainerItems());
+    }
 
-        $this->container = new FakeReadableContainer($items);
+    protected function readableContainerItems()
+    {
+        return [
+            'pokemon' => 'Charmander',
+            'pirate' => 'Barbossa',
+            'music' => 'Right Now',
+            'instrument' => 'Bass',
+            'follow' => 'The White Rabbit',
+        ];
     }
 
     /**
@@ -45,13 +51,14 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
 
     public function namesAndValuesOfExistingItems()
     {
-        return [
-            ['pokemon', 'Charmander'],
-            ['pirate', 'Barbossa'],
-            ['music', 'Right Now'],
-            ['instrument', 'Bass'],
-            ['follow', 'The White Rabbit'],
-        ];
+        $items = $this->readableContainerItems();
+
+        $data = [];
+        foreach ($items as $name => $value) {
+            $data[] = [$name, $value];
+        }
+
+        return $data;
     }
 
     /**
@@ -92,5 +99,16 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
             ['bla'],
             ['blu'],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function retrieveAllItemsWhenCallingTheMethodAll()
+    {
+        $this->assertEquals(
+            $this->readableContainerItems(),
+            $this->container->all()
+        );
     }
 }

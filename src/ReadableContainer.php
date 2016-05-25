@@ -2,7 +2,7 @@
 
 namespace Bauhaus\Container;
 
-abstract class ReadableContainer extends BaseContainer implements Readable
+abstract class ReadableContainer extends BaseContainer implements Readable, Iterator
 {
     public function has(string $itemName): bool
     {
@@ -17,5 +17,10 @@ abstract class ReadableContainer extends BaseContainer implements Readable
     public function __get(string $itemName)
     {
         return $this->get($itemName);
+    }
+
+    public function all(): array
+    {
+        return $this->_all();
     }
 }

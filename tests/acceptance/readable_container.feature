@@ -69,3 +69,12 @@ Feature: Readable container to keep data accessible, but also safe
          | some text  |
          | other text |
          | blabla     |
+
+   Scenario: Retrieving all items from the given container
+      When I request the container for all items
+      Then I should receive an array with the follow data:
+         | name       | value      |
+         | pokemon    | Charmander |
+         | pirate     | Barbossa   |
+         | music      | Right Now  |
+         | instrument | Bass       |

@@ -87,4 +87,25 @@ class FeatureContext implements Context, SnippetAcceptingContext
             $this->outcome
         );
     }
+
+    /**
+     * @When I request the container for all items
+     */
+    public function iRequestTheContainerForAllItems()
+    {
+        $this->outcome = $this->container->all();
+    }
+
+    /**
+     * @Then I should receive an array with the follow data:
+     */
+    public function iShouldReceiveAnArrayWithTheFollowData(TableNode $itemsData)
+    {
+        $expectedItems = [];
+        foreach ($itemsData as $data) {
+            $expectedItems[$data['name']] = $data['value'];
+        }
+
+        assertEquals($expectedItems, $this->outcome);
+    }
 }
