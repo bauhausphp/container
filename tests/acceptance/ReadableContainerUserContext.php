@@ -1,5 +1,7 @@
 <?php
 
+namespace Bauhaus\Container;
+
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
@@ -7,9 +9,9 @@ use Behat\Gherkin\Node\TableNode;
 
 use Bauhaus\Container\FakeReadableContainer;
 
-require __DIR__ . '/../../bootstrap.php';
+require __DIR__ . '/../bootstrap.php';
 
-class FeatureContext implements Context, SnippetAcceptingContext
+class ReadableContainerUserContext implements Context, SnippetAcceptingContext
 {
     private $container = null;
     private $outcome = null;

@@ -1,7 +1,10 @@
 default:
    autoload:
-      '': %paths.base%/acceptance/bootstrap
+      '': %paths.base%/acceptance/
+
    suites:
       defaults:
          paths:
-            - %paths.base%/acceptance
+            - %paths.base%/acceptance/features/
+         contexts:
+            - Bauhaus\Container\ReadableContainerUserContext
