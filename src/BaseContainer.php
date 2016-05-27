@@ -11,6 +11,10 @@ abstract class BaseContainer
 
     final protected function _register(string $itemName, $itemValue)
     {
+        if ($this->has($itemName)) {
+            throw new ContainerItemAlreadyExistsException($itemName);
+        }
+
         $this->items[$itemName] = $itemValue;
     }
 
