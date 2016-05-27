@@ -11,15 +11,17 @@
 
 ## Introduction
 
-The goal of this package is to provide useful interfaces and implementations of containers with differents behaviors (`readable`, `registrable` and `mutable`) which could be used as base to more complex implementations.
+The goal of this package is to provide useful interfaces and implementations of
+containers with differents behaviors (`readable` and `registrable`) which could
+be used as base to more complex implementations.
 
 To undestand how to use the containers, read the tests:
 
-- [Readable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/readable_container.feature)
-- Registrable Container is under development ...
-- Mutable Container is under development ...
+- [Readable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/readable_container.feature)
+- [Registrable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/registrable_container.feature)
 
-> If you have issues about the test frameworks, see the [references](https://github.com/bauhausphp/package-container#references).
+> If you have issues about the test frameworks, see the
+> [references](https://github.com/bauhausphp/package-container#references).
 
 ## Contributing
 
