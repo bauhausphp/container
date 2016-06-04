@@ -8,7 +8,6 @@
 [![Build Status](https://img.shields.io/travis/bauhausphp/package-container/master.svg?style=flat-square)](https://travis-ci.org/bauhausphp/package-container)
 [![Coverage Status](https://img.shields.io/coveralls/bauhausphp/package-container/master.svg?style=flat-square)](https://coveralls.io/github/bauhausphp/package-container?branch=master)
 [![Codacy Badge](https://img.shields.io/codacy/9e4bf1d8a6e649b1b48c5a2251d1c78e.svg?style=flat-square)](https://www.codacy.com/app/fefas/bauhausphp-package-container)
-[![Code Climage](https://img.shields.io/codeclimate/github/bauhausphp/package-container.svg?style=flat-square)](https://codeclimate.com/github/bauhausphp/package-container)
 
 ## Introduction
 
