@@ -1,4 +1,4 @@
-# Bauhaus PHP Package - Container
+# Bauhaus PHP - Package Container
 
 [![Latest Stable Version](https://poser.pugx.org/bauhaus/container/v/stable?format=flat-square)](https://packagist.org/packages/bauhaus/container)
 [![Latest Unstable Version](https://poser.pugx.org/bauhaus/container/v/unstable?format=flat-square)](https://packagist.org/packages/bauhaus/container)
@@ -12,50 +12,52 @@
 ## Introduction
 
 The goal of this package is to provide useful interfaces and implementations of
-containers with differents behaviors (`readable` and `registrable`) which could
-be used as base to more complex implementations.
+containers with the `readable` and `registrable` behaviors which can be used as
+base to create more complex implementations.
 
-To undestand how to use the containers, read the tests:
+To understand what the containers can do, read the features used in the
+acceptance tests implemented using [behat](http://docs.behat.org/en/v3.0/):
 
 - [Readable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/readable_container.feature)
 - [Registrable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/registrable_container.feature)
 
-> If you have issues about the test frameworks, see the
-> [references](https://github.com/bauhausphp/package-container#references).
+## Install
 
-## Contributing
+The easiest way to install is by using [composer](https://getcomposer.org/):
 
-Did you find some problem or do you want to make this project better?
+```
+$ composer require bauhaus/contaier:~v1.0
+```
 
-1. You can open an issue [here](https://github.com/bauhausphp/package-container/issues)
-2. Or read the next section to code together :)
+## Contribute
 
-### Coding
+1. Did you find some problem? You easy can open an issue
+   [here](https://github.com/bauhausphp/package-container/issues)
+2. Do you want to make this project better? Follow the next section to start
+   code together :)
 
-To start coding in this project, you will need first to clone this repository:
+## Code Together
+
+First you will need to clone this repository:
 
 ```
 $ git clone git@github.com:bauhausphp/package-container.git bauhausphp-package-container
 $ cd bauhausphp-package-container
 ```
 
-Second, you will need to get the dependencies which are already with the versions locked in the `composer.lock`. So, you just have to install them:
+Second, now you have to install the dependencies which are already with the
+versions locked by the `composer.lock`. So, you just have to install them using
+[composer](https://getcomposer.org/):
 
 ```
-composer install
+$ composer install
 ```
 
-Third, the tests! We have *unit* and *acceptance* tests that were implemented using `phpunit` and `behat` frameworks respectively:
+Third, the tests! There are *unit* and *acceptance* tests that were implemented
+using [phpunit](https://phpunit.de/) and [behat](http://docs.behat.org/en/v3.0/)
+frameworks respectively and you can run them by runnig the following commands:
 
 ```
-$ vendor/bin/phpunit -c tests/phpunit.xml # unit
-$ vendor/bin/behat --config tests/behat.yml # acceptance
+$ vendor/bin/phpunit -c tests/phpunit.xml
+$ vendor/bin/behat --config tests/behat.yml
 ```
-
-And finally, explore it and may the force be with you!
-
-## References
-
-- [composer](https://getcomposer.org/)
-- [phpunit](https://phpunit.de/)
-- [behat](http://docs.behat.org/en/v3.0/)
