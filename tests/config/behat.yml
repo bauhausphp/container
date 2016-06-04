@@ -1,6 +1,6 @@
 default:
    autoload:
-      '': %paths.base%/acceptance/
+      '': %paths.base%/../acceptance/
 
    suites:
       defaults:
@@ -8,7 +8,7 @@ default:
 
       readable_container:
          paths:
-            - %paths.base%/acceptance/features/
+            - %paths.base%/../acceptance/features/
          contexts:
             - Bauhaus\Container\ReadableContainerUserContext
          filters:
@@ -16,7 +16,7 @@ default:
 
       registrable_container:
          paths:
-            - %paths.base%/acceptance/features/
+            - %paths.base%/../acceptance/features/
          contexts:
             - Bauhaus\Container\RegistrableContainerUserContext
          filters:

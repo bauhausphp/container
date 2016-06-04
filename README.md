@@ -58,6 +58,6 @@ using [phpunit](https://phpunit.de/) and [behat](http://docs.behat.org/en/v3.0/)
 frameworks respectively and you can run them by runnig the following commands:
 
 ```
-$ vendor/bin/phpunit -c tests/phpunit.xml
-$ vendor/bin/behat --config tests/behat.yml
+$ vendor/bin/phpunit -c tests/config/phpunit.xml
+$ vendor/bin/behat --config tests/config/behat.yml
 ```
