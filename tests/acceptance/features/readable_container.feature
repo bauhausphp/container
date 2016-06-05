@@ -1,7 +1,7 @@
-Feature: Readable container to keep data accessible, but also safe
+Feature: Readable container
    In order to keep data accessible, but not writable for external agents
    As a readable container user
-   I should be able only to read the items stored inside a readable container
+   I should be able only to read items
 
    Background:
       Given a readable container with the follow items:
