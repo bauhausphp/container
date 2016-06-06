@@ -2,34 +2,34 @@
 
 namespace Bauhaus\Container;
 
-use \Bauhaus\Container\Exception\ContainerItemNotFoundException;
-use \Bauhaus\Container\Exception\ContainerItemAlreadyExistsException;
+use \Bauhaus\Container\Exception\ContainerItemNotFound;
+use \Bauhaus\Container\Exception\ContainerItemAlreadyExists;
 
 abstract class BaseContainer
 {
     private $items = [];
 
-    final protected function _register(string $itemName, $itemValue)
+    final protected function _register(string $label, $value)
     {
-        if ($this->has($itemName)) {
-            throw new ContainerItemAlreadyExistsException($itemName);
+        if ($this->has($label)) {
+            throw new ContainerItemAlreadyExists($label);
         }
 
-        $this->items[$itemName] = $itemValue;
+        $this->items[$label] = $value;
     }
 
-    final protected function _has(string $itemName): bool
+    final protected function _has(string $label): bool
     {
-        return array_key_exists($itemName, $this->items);
+        return array_key_exists($label, $this->items);
     }
 
-    final protected function _get(string $itemName)
+    final protected function _get(string $label)
     {
-        if ($this->has($itemName) === false) {
-            throw new ContainerItemNotFoundException($itemName);
+        if ($this->has($label) === false) {
+            throw new ContainerItemNotFound($label);
         }
 
-        return $this->items[$itemName];
+        return $this->items[$label];
     }
 
     final protected function _all(): array

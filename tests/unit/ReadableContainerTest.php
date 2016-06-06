@@ -22,78 +22,49 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    /**
-     * @test
-     * @dataProvider namesAndValuesOfExistingItems
-     */
-    public function verificationThatItemExistsByItsName($itemName)
+    protected function nonExistingLabels()
     {
-        $this->assertTrue($this->container->has($itemName));
+        return [
+            'aName',
+            'anotherName',
+            '',
+        ];
     }
 
     /**
      * @test
-     * @dataProvider namesAndValuesOfExistingItems
+     * @dataProvider labelsAndTheyExistence
      */
-    public function retrieveTheValueOfExistingItemByItsName($itemName, $expectedItemValue)
+    public function verifyThatItemExistsByLabel($label, $exists)
     {
-        $this->assertEquals($expectedItemValue, $this->container->get($itemName));
+        $this->assertEquals($this->container->has($label), $exists);
     }
 
-    /**
-     * @test
-     * @dataProvider namesAndValuesOfExistingItems
-     */
-    public function retrieveMagicallyTheValueOfExistingItemByItsName($itemName, $expectedItemValue)
+    public function labelsAndTheyExistence()
     {
-        $this->assertEquals($expectedItemValue, $this->container->{$itemName});
-    }
+        foreach ($this->readableContainerItems() as $label => $value) {
+            yield [$label, true];
+        }
 
-    public function namesAndValuesOfExistingItems()
-    {
-        foreach ($this->readableContainerItems() as $name => $value) {
-            yield [$name, $value];
+        foreach ($this->nonExistingLabels() as $label) {
+            yield [$label, false];
         }
     }
 
     /**
      * @test
-     * @dataProvider namesOfNonExistingItems
+     * @dataProvider labelsAndValuesOfItems
      */
-    public function verificationThatItemDoesNotExistBySomeName($itemName)
+    public function retrieveTheValueOfItemByLabel($label, $expectedValue)
     {
-        $this->assertFalse($this->container->has($itemName));
+        $this->assertEquals($expectedValue, $this->container->$label);
     }
 
-    /**
-     * @test
-     * @dataProvider namesOfNonExistingItems
-     * @expectedException Bauhaus\Container\Exception\ContainerItemNotFoundException
-     */
-    public function exceptionOccursWhenTryToRetriveNonExistingItem($itemName)
+    public function labelsAndValuesOfItems()
     {
-        $this->container->get($itemName);
-    }
-
-    /**
-     * @test
-     * @dataProvider namesOfNonExistingItems
-     * @expectedException Bauhaus\Container\Exception\ContainerItemNotFoundException
-     */
-    public function exceptionOccursWhenTryToRetriveMagicallyNonExistingItem($itemName)
-    {
-        $this->container->{$itemName};
-    }
-
-    public function namesOfNonExistingItems()
-    {
-        return [
-            ['aName'],
-            ['anotherName'],
-            [''],
-            ['bla'],
-            ['blu'],
-        ];
+        foreach ($this->readableContainerItems() as $label => $value) {
+            yield [$label, $value];
+        }
     }
 
     /**
@@ -110,13 +81,23 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function retrieveEachItemWhenItIsIterated()
+    public function retrieveAllItemsWhenContainerIsIterated()
     {
         $outcome = [];
-        foreach ($this->container as $itemName => $itemValue) {
-            $outcome[$itemName] = $itemValue;
+        foreach ($this->container as $label => $value) {
+            $outcome[$label] = $value;
         }
 
         $this->assertEquals($this->readableContainerItems(), $outcome);
+    }
+
+    /**
+     * @test
+     * @expectedException Bauhaus\Container\Exception\ContainerItemNotFound
+     * @expectedExceptionMessage No item labeled as 'nonExistingLabel' was found in container
+     */
+    public function exceptionOccursWhenTryToRetriveNonExistingItem()
+    {
+        $this->container->nonExistingLabel;
     }
 }

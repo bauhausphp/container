@@ -13,27 +13,16 @@ class RegistrableContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @dataProvider namesAndValuesOfItemsToRegister
+     * @dataProvider labelsAndValuesToRegister
      */
-    public function shouldBeAbleToRetrieveValueAfterRegisterNewItem($itemName, $itemValue)
+    public function shouldBeAbleToRegisterNewItem($label, $value)
     {
-        $this->container->register($itemName, $itemValue);
+        $this->container->register($label, $value);
 
-        $this->assertEquals($itemValue, $this->container->get($itemName));
+        $this->assertEquals($value, $this->container->$label);
     }
 
-    /**
-     * @test
-     * @dataProvider namesAndValuesOfItemsToRegister
-     * @expectedException Bauhaus\Container\Exception\ContainerItemAlreadyExistsException
-     */
-    public function exceptionOccursWhenTryToRegisterAnItemWithATakenName($itemName, $itemValue)
-    {
-        $this->container->register($itemName, $itemValue);
-        $this->container->register($itemName, $itemValue);
-    }
-
-    public function namesAndValuesOfItemsToRegister()
+    public function labelsAndValuesToRegister()
     {
         return [
             ['pokemon', 'Charmander'],
@@ -42,5 +31,16 @@ class RegistrableContainerTest extends \PHPUnit_Framework_TestCase
             ['instrument', 'Bass'],
             ['follow', 'The White Rabbit'],
         ];
+    }
+
+    /**
+     * @test
+     * @expectedException Bauhaus\Container\Exception\ContainerItemAlreadyExists
+     * @expectedExceptionMessage There is already an item with label 'someLabel'
+     */
+    public function exceptionOccursWhenTryToRegisterAnItemWithATakenName()
+    {
+        $this->container->register('someLabel', 'someValue');
+        $this->container->register('someLabel', 'someValue');
     }
 }

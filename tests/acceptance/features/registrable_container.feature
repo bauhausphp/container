@@ -1,31 +1,27 @@
-Feature: Registrable container to register new items with read-only access
+Feature: Registrable container
    In order to register new items and to keep them accessible, but not muttable
    As a registrable container user
-   I should be able to register new items and to retrieve them
+   I should be able to register new items and them to retrieve them
 
    Background:
-      Given a registrable container with the follow items:
-         | name       | value      |
+      Given a "registrable" container with the following items:
+         | label      | value      |
          | pokemon    | Charmander |
+
+   Scenario Outline: Registering a new item
+      When I register an item with label "<label>" and value "<value>"
+      And I require the value of the item "<label>"
+      Then I should receive the "<value>"
+
+      Examples:
+         | label      | value      |
          | pirate     | Barbossa   |
          | music      | Right Now  |
+         | instrument | Bass       |
 
-   Scenario Outline: Registering a new item to the given container
-      When I register a new item with name "<name>" and value "<value>"
-      Then I should retrieve "<value>" requesting the item "<name>"
-
-      Examples:
-         | name               | value |
-         | instrument         | Bass  |
-         | another instrument | Drums |
-         | food               | Pizza |
-
-   Scenario Outline: Should not be able to retrieve an item with a taken name
-      When I try to register a new item with name "<name>"
-      Then I should receive the exception "ContainerItemAlreadyExistsException"
-
-      Examples:
-         | name    |
-         | pokemon |
-         | pirate  |
-         | music   |
+   Scenario: Trying to register an item with a label already taken
+      When I try to register an item with label "pokemon" and value "Pikachu"
+      Then the exception "ContainerItemAlreadyExists" is throwed with the message:
+         """
+         There is already an item with label 'pokemon'
+         """

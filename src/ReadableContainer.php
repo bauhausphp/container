@@ -4,19 +4,14 @@ namespace Bauhaus\Container;
 
 abstract class ReadableContainer extends BaseContainer implements Readable, Iterator
 {
-    public function has(string $itemName): bool
+    public function has(string $label): bool
     {
-        return $this->_has($itemName);
+        return $this->_has($label);
     }
 
-    public function get(string $itemName)
+    public function __get(string $label)
     {
-        return $this->_get($itemName);
-    }
-
-    public function __get(string $itemName)
-    {
-        return $this->get($itemName);
+        return $this->_get($label);
     }
 
     public function all(): array
