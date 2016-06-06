@@ -7,9 +7,6 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
-use Bauhaus\Container\FakeReadableContainer;
-use Bauhaus\Container\FakeRegistrableContainer;
-
 require __DIR__ . '/../bootstrap.php';
 
 class ContainerUserBaseContext implements Context, SnippetAcceptingContext
