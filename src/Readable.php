@@ -4,6 +4,6 @@ namespace Bauhaus\Container;
 
 interface Readable
 {
-    public function has(string $itemName): bool;
-    public function __get(string $itemName);
+    public function has(string $label): bool;
+    public function __get(string $label);
 }

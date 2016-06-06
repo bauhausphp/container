@@ -4,5 +4,5 @@ namespace Bauhaus\Container;
 
 interface Registrable
 {
-    public function register(string $itemName, $itemValue);
+    public function register(string $label, $value);
 }
