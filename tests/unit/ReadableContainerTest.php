@@ -42,7 +42,7 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
 
     public function labelsAndTheyExistence()
     {
-        foreach ($this->readableContainerItems() as $label => $value) {
+        foreach (array_keys($this->readableContainerItems()) as $label) {
             yield [$label, true];
         }
 
