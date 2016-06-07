@@ -25,7 +25,7 @@ abstract class BaseContainer
 
     final protected function _get(string $label)
     {
-        if ($this->has($label) === false) {
+        if (false === $this->has($label)) {
             throw new ContainerItemNotFound($label);
         }
 
