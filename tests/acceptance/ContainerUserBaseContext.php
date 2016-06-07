@@ -11,8 +11,6 @@ require __DIR__ . '/../bootstrap.php';
 
 class ContainerUserBaseContext implements Context, SnippetAcceptingContext
 {
-    const EXCEPTION_NAMESPACE = "Bauhaus\\Container\\Exception\\";
-
     protected $container = null;
     protected $outcome = null;
 
@@ -61,16 +59,11 @@ class ContainerUserBaseContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then the exception :exceptionClassName is throwed with the message:
+     * @Then the exception :exceptionClass is throwed with the message:
      */
-    public function theExceptionIsThrowedWithTheMessage(
-        $exceptionClassName,
-        PyStringNode $message
-    ) {
-        assertInstanceOf(
-            self::EXCEPTION_NAMESPACE . $exceptionClassName,
-            $this->outcome
-        );
+    public function theExceptionIsThrowedWithTheMessage($exceptionClass, PyStringNode $message)
+    {
+        assertInstanceOf($exceptionClass, $this->outcome);
         assertEquals($message->getRaw(), $this->outcome->getMessage());
     }
 }

@@ -51,7 +51,7 @@ class ReadableContainerUserContext extends ContainerUserBaseContext
     public function iRequireTheValueOfTheItemThatDoesNotExists($label)
     {
         try {
-            $this->outcome = $this->container->$label;
+            $this->container->$label;
         } catch (\Exception $e) {
             $this->outcome = $e;
         }

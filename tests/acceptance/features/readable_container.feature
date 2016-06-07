@@ -55,7 +55,7 @@ Feature: Readable container
 
    Scenario: Trying to retrieve value of non existent item
       When I require the value of the item "Pokemon" that does not exists
-      Then the exception "ContainerItemNotFound" is throwed with the message:
+      Then the exception "Bauhaus\Container\Exception\ContainerItemNotFound" is throwed with the message:
          """
          No item labeled as 'Pokemon' was found in container
          """

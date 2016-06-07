@@ -21,7 +21,7 @@ Feature: Registrable container
 
    Scenario: Trying to register an item with a label already taken
       When I try to register an item with label "pokemon" already taken
-      Then the exception "ContainerItemAlreadyExists" is throwed with the message:
+      Then the exception "Bauhaus\Container\Exception\ContainerItemAlreadyExists" is throwed with the message:
          """
          There is already an item with label 'pokemon'
          """
