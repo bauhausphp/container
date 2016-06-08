@@ -12,13 +12,5 @@ script:
    - vendor/bin/behat --config tests/config/behat.yml
 
 after_success:
-   # Coveralls
    - composer require --dev satooshi/php-coveralls:1.*
    - vendor/bin/coveralls -v --coverage_clover=build/logs/clover.xml
-
-   # Cadacy Coverage
-   # remove behat to avoid dependency conflicts to install another software
-   - composer remove symfony/console
-   - composer require --dev codacy/coverage:dev-master
-   - vendor/bin/codacycoverage clover build/logs/clover.xml
-   - composer remove codacy/coverage
