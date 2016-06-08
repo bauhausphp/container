@@ -37,7 +37,7 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function verifyThatItemExistsByLabel($label, $exists)
     {
-        $this->assertEquals($this->container->has($label), $exists);
+        $this->assertEquals($this->container->has($label), true);
     }
 
     public function labelsAndTheyExistence()
