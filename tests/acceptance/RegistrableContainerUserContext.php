@@ -17,7 +17,7 @@ class RegistrableContainerUserContext extends ContainerUserBaseContext
     /**
      * @When I try to register an item with label :label already taken
      */
-    public function iTryToRegisterAnItemWithLabelAndValue($label)
+    public function iTryToRegisterAnItemWithLabelAlreadyTaken($label)
     {
         try {
             $this->container->register($label, 'someValue');
