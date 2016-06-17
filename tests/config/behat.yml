@@ -13,11 +13,3 @@ default:
             - Bauhaus\Container\ReadableContainerUserContext
          filters:
             role: readable container user
-
-      registrable_container:
-         paths:
-            - %paths.base%/../acceptance/features/
-         contexts:
-            - Bauhaus\Container\RegistrableContainerUserContext
-         filters:
-            role: registrable container user

@@ -4,7 +4,7 @@ Feature: Readable container
    I should be able only to read items
 
    Background:
-      Given a "readable" container with the following items:
+      Given a readable container with the following items:
          | label      | value      |
          | pokemon    | Charmander |
          | pirate     | Barbossa   |
