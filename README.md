@@ -11,15 +11,14 @@
 
 ## Introduction
 
-The goal of this package is to provide useful interfaces and implementations of
-containers with the `readable` and `registrable` behaviors which can be used as
-base to create more complex implementations.
+The goal of this package is to provide useful interface and implementation of
+containers with the `readable` behaviors which can be used as superclass to
+create more complex implementations.
 
-To understand what the containers can do, read the features used in the
-acceptance tests implemented using [behat](http://docs.behat.org/en/v3.0/):
-
-- [Readable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/readable_container.feature)
-- [Registrable Container](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/registrable_container.feature)
+To understand how to work with the container, read the
+[features](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/)
+used in the acceptance tests implemented using
+[behat](http://docs.behat.org/en/v3.0/):
 
 ## Install
 
