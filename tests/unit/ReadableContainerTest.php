@@ -35,9 +35,9 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndTheyExistence
      */
-    public function verifyThatItemExistsByLabel($label, $exists)
+    public function verifyThatItemExistsByItsLabel($label, $exists)
     {
-        $this->assertEquals($this->container->has($label), $exists);
+        $this->assertTrue($this->container->has($label) === $exists);
     }
 
     public function labelsAndTheyExistence()
@@ -55,7 +55,7 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndValuesOfItems
      */
-    public function retrieveTheValueOfItemByLabel($label, $expectedValue)
+    public function retrieveTheValueOfAnItemByItsLabel($label, $expectedValue)
     {
         $this->assertEquals($expectedValue, $this->container->$label);
     }
@@ -81,7 +81,7 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function retrieveAllItemsWhenContainerIsIterated()
+    public function retrieveAllItemsWhenItIsIterated()
     {
         $outcome = [];
         foreach ($this->container as $label => $value) {
@@ -94,10 +94,20 @@ class ReadableContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @expectedException Bauhaus\Container\Exception\ContainerItemNotFound
-     * @expectedExceptionMessage No item labeled as 'nonExistingLabel' was found in container
+     * @expectedExceptionMessage No item labeled as 'nonExistingLabel' was found in this container
      */
-    public function exceptionOccursWhenTryToRetriveNonExistingItem()
+    public function exceptionOccursWhenTryToRetriveAnItemWithNonExistingLabel()
     {
         $this->container->nonExistingLabel;
+    }
+
+    /**
+     * @test
+     * @expectedException Bauhaus\Container\Exception\ContainerItemAlreadyExists
+     * @expectedExceptionMessage There is already an item with label 'pokemon' in this container
+     */
+    public function exceptionOccursWhenTryToRegisterAnItemWithAnAlreadyTakenLabel()
+    {
+        $this->container->register('pokemon', 'Charmander');
     }
 }

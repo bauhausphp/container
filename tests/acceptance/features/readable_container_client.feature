@@ -57,5 +57,5 @@ Feature: Readable container
       When I require the value of the item "Pokemon" that does not exists
       Then the exception "Bauhaus\Container\Exception\ContainerItemNotFound" is throwed with the message:
          """
-         No item labeled as 'Pokemon' was found in container
+         No item labeled as 'Pokemon' was found in this container
          """
