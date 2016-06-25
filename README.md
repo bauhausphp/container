@@ -26,7 +26,7 @@ acceptance tests implemented using [behat](http://docs.behat.org/en/v3.0/):
 The easiest way to install is by using [composer](https://getcomposer.org/):
 
 ```
-$ composer require bauhaus/contaier:~v1.0
+$ composer require bauhaus/container:~v1.0
 ```
 
 ## Contribute
