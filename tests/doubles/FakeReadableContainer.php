@@ -10,4 +10,9 @@ class FakeReadableContainer extends ReadableContainer
             $this->_register($name, $value);
         }
     }
+
+    public function register(string $label, $value)
+    {
+        $this->_register($label, $value);
+    }
 }

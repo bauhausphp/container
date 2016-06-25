@@ -6,10 +6,18 @@ default:
       defaults:
          contexts: []
 
-      readable_container:
+      readable_container_client:
          paths:
             - %paths.base%/../acceptance/features/
          contexts:
             - Bauhaus\Container\ReadableContainerUserContext
          filters:
-            role: readable container user
+            role: readable container client
+
+      readable_container_subclass:
+         paths:
+            - %paths.base%/../acceptance/features/
+         contexts:
+            - Bauhaus\Container\ReadableContainerUserContext
+         filters:
+            role: readable container subclass

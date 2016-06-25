@@ -30,7 +30,7 @@ class ReadableContainerUserContext implements Context, SnippetAcceptingContext
     /**
      * @Transform /true|false/
      */
-    public function castStringToBoolean($string)
+    public function castStringToBoolean(string $string): bool
     {
         if ('true' == $string) {
             return true;
@@ -40,7 +40,7 @@ class ReadableContainerUserContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given a readable container with the following items:
+     * @Given (I am )a readable container with the following items:
      */
     public function aReadableContainerWithTheFolloingItems(array $items)
     {
@@ -95,6 +95,18 @@ class ReadableContainerUserContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @When I try to register an item with label :label and value :value
+     */
+    public function iTryToRegisterAnItemWithLabelAndValue($label, $value)
+    {
+        try {
+            $this->container->register($label, $value);
+        } catch (\Exception $e) {
+            $this->outcome = $e;
+        }
+    }
+
+    /**
      * @Then I should receive( the) :expectedValue
      */
     public function iShouldReceive($expectedValue)
@@ -103,7 +115,7 @@ class ReadableContainerUserContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Then I should receive an array with the following items:
+     * @Then I should receive (an array with) the following items( at the same order):
      */
     public function iShouldReceiveAnArrayWithTheFollowData(array $expectedItems)
     {
@@ -113,8 +125,10 @@ class ReadableContainerUserContext implements Context, SnippetAcceptingContext
     /**
      * @Then the exception :exceptionClass is throwed with the message:
      */
-    public function theExceptionIsThrowedWithTheMessage($exceptionClass, PyStringNode $message)
-    {
+    public function theExceptionIsThrowedWithTheMessage(
+        $exceptionClass,
+        PyStringNode $message
+    ) {
         assertInstanceOf($exceptionClass, $this->outcome);
         assertEquals($message->getRaw(), $this->outcome->getMessage());
     }
