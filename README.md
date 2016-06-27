@@ -18,19 +18,19 @@ create more complex implementations.
 To understand how to work with the container, read the
 [features](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/)
 used in the acceptance tests implemented using
-[behat](http://docs.behat.org/en/v3.0/):
+[behat](http://docs.behat.org/en/v3.0/).
 
 ## Install
 
 The easiest way to install is by using [composer](https://getcomposer.org/):
 
 ```
-$ composer require bauhaus/container:~v1.0
+$ composer require bauhaus/container:dev-master
 ```
 
 ## Contribute
 
-1. Did you find some problem? You easy can open an issue
+1. Did you find some problem? You can easy open an issue
    [here](https://github.com/bauhausphp/package-container/issues)
 2. Do you want to make this project better? Follow the next section to start
    code together :)
