@@ -1,49 +1,49 @@
 {
-   "name": "bauhaus/container",
-   "description": "This package defines container interfaces and implementations.",
+  "name": "bauhaus/container",
+  "description": "This package defines container interfaces and implementations.",
 
-   "type": "library",
-   "license": "MIT",
+  "type": "library",
+  "license": "MIT",
 
-   "keywords": [
-      "bauhaus",
-      "container"
-   ],
+  "keywords": [
+    "bauhaus",
+    "container"
+  ],
 
-   "authors": [
-      {
-         "name": "Felipe Martins",
-         "homepage": "http://fefas.net"
-      }
-   ],
+  "authors": [
+    {
+      "name": "Felipe Martins",
+      "homepage": "http://fefas.net"
+    }
+  ],
 
-   "support": {
-      "issues": "https://github.com/bauhausphp/package-container/issues",
-      "source": "https://github.com/bauhausphp/package-container"
-   },
+  "support": {
+    "issues": "https://github.com/bauhausphp/package-container/issues",
+    "source": "https://github.com/bauhausphp/package-container"
+  },
 
-   "require": {
-      "php": ">=7.0"
-   },
+  "require": {
+    "php": ">=7.0"
+  },
 
-   "autoload": {
-      "psr-4": {
-         "Bauhaus\\Container\\": "src/"
-      }
-   },
+  "autoload": {
+    "psr-4": {
+      "Bauhaus\\Container\\": "src/"
+    }
+  },
 
-   "require-dev": {
-      "behat/behat": "~3.0",
-      "phpunit/phpunit": "5.3.*"
-   },
+  "require-dev": {
+    "behat/behat": "~3.0",
+    "phpunit/phpunit": "5.3.*"
+  },
 
-   "autoload-dev": {
-      "psr-4": {
-         "Bauhaus\\Container\\": [
-            "tests/doubles/",
-            "tests/acceptance/",
-            "tests/unit/"
+  "autoload-dev": {
+    "psr-4": {
+      "Bauhaus\\Container\\": [
+        "tests/doubles/",
+        "tests/acceptance/",
+        "tests/unit/"
          ]
-      }
-   }
+    }
+  }
 }
