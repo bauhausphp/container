@@ -40,7 +40,6 @@
   "autoload-dev": {
     "psr-4": {
       "Bauhaus\\Container\\": [
-        "tests/doubles/",
         "tests/unit/"
       ]
     }
