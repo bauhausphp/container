@@ -1,8 +1,8 @@
 <?php
 
-namespace Bauhaus\Container\Exception;
+namespace Bauhaus\Container;
 
-class ContainerItemNotFound extends \Exception
+class ContainerItemNotFoundException extends \Exception
 {
     public function __construct($label)
     {
