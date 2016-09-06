@@ -11,18 +11,16 @@
 
 ## Introduction
 
-The goal of this package is to provide useful interface and implementation of
-containers with the `readable` behaviors which can be used as superclass to
-create more complex implementations.
+The goal of this package is to provide useful container which can be used as
+superclass to create more complex implementations.
 
 To understand how to work with the container, read the
-[features](https://github.com/bauhausphp/package-container/blob/master/tests/acceptance/features/)
-used in the acceptance tests implemented using
-[behat](http://docs.behat.org/en/v3.0/).
+[unit tests](https://github.com/bauhausphp/package-container/blob/master/tests/unit/ContainerTest.php)
+implemented using [phpunit](https://phpunit.de/).
 
 ## Install
 
-The easiest way to install is by using [composer](https://getcomposer.org/):
+The easiest way to install it is by using [composer](https://getcomposer.org/):
 
 ```
 $ composer require bauhaus/container:dev-master
@@ -31,9 +29,8 @@ $ composer require bauhaus/container:dev-master
 ## Contribute
 
 1. Did you find some problem? You can easy open an issue
-   [here](https://github.com/bauhausphp/package-container/issues)
-2. Do you want to make this project better? Follow the next section to start
-   code together :)
+   [here](https://github.com/bauhausphp/package-container/issues/new)
+2. Do you want to help coding? Read the next section and let's code together :)
 
 ## Code Together
 
@@ -44,7 +41,7 @@ $ git clone git@github.com:bauhausphp/package-container.git bauhausphp-package-c
 $ cd bauhausphp-package-container
 ```
 
-Second, now you have to install the dependencies which are already with the
+Second, you have to install the dependencies which are already with the
 versions locked by the `composer.lock`. So, you just have to install them using
 [composer](https://getcomposer.org/):
 
@@ -52,11 +49,10 @@ versions locked by the `composer.lock`. So, you just have to install them using
 $ composer install
 ```
 
-Third, the tests! There are *unit* and *acceptance* tests that were implemented
-using [phpunit](https://phpunit.de/) and [behat](http://docs.behat.org/en/v3.0/)
-frameworks respectively and you can run them by runnig the following commands:
+Third, before starting code, you need to make sure that the tests pass. There
+are *unit* that were implemented using [phpunit](https://phpunit.de/) framework.
+To run them, use the following command:
 
 ```
 $ vendor/bin/phpunit -c tests/config/phpunit.xml
-$ vendor/bin/behat --config tests/config/behat.yml
 ```
