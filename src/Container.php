@@ -2,9 +2,6 @@
 
 namespace Bauhaus\Container;
 
-use \Bauhaus\Container\Exception\ContainerItemNotFound;
-use \Bauhaus\Container\Exception\ContainerItemAlreadyExists;
-
 class Container implements Readable, \IteratorAggregate
 {
     private $items = [];
