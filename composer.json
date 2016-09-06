@@ -1,6 +1,6 @@
 {
   "name": "bauhaus/container",
-  "description": "This package defines container interfaces and implementations.",
+  "description": "Define and implement a simple container.",
 
   "type": "library",
   "license": "MIT",
