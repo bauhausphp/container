@@ -41,9 +41,8 @@
     "psr-4": {
       "Bauhaus\\Container\\": [
         "tests/doubles/",
-        "tests/acceptance/",
         "tests/unit/"
-         ]
+      ]
     }
   }
 }
