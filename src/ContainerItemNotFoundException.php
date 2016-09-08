@@ -2,10 +2,10 @@
 
 namespace Bauhaus\Container;
 
-class ContainerItemNotFoundException extends \Exception
+class ContainerItemNotFoundException extends ContainerItemException
 {
-    public function __construct($label)
+    protected function messageTemplate(): string
     {
-        parent::__construct("No item labeled as '$label' was found in this container");
+        return "No item labeled as '%s' was found in this container";
     }
 }
