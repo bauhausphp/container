@@ -18,6 +18,15 @@ To understand how to work with the container, read the
 [unit tests](https://github.com/bauhausphp/package-container/blob/master/tests/unit/ContainerTest.php)
 implemented using [phpunit](https://phpunit.de/).
 
+> You can have a behavior summary of this *Dependency Injection Container* by
+> runing the tests using the `testdox` option:
+>
+> ```
+> $ vendor/bin/phpunit -c tests/config/phpunit.xml --testdox
+> ```
+>
+> See the *[Code Together](#code-together)* section for more details.
+
 ## Install
 
 The easiest way to install it is by using [composer](https://getcomposer.org/):
