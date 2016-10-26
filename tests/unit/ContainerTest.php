@@ -57,6 +57,15 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function retrieveTheValueOfAnItemByItsLabel($label, $expectedValue)
     {
+        $this->assertEquals($expectedValue, $this->container->get($label));
+    }
+
+    /**
+     * @test
+     * @dataProvider labelsAndValuesOfItems
+     */
+    public function retrieveTheValueOfAnItemByItsLabelUsingMagicMethod($label, $expectedValue)
+    {
         $this->assertEquals($expectedValue, $this->container->$label);
     }
 

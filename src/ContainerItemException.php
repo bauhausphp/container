@@ -2,7 +2,9 @@
 
 namespace Bauhaus\Container;
 
-abstract class ContainerItemException extends \Exception
+use Interop\Container\Exception\ContainerException;
+
+abstract class ContainerItemException extends \Exception implements ContainerException
 {
     public function __construct($label)
     {

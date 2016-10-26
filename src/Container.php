@@ -11,18 +11,23 @@ class Container implements Readable, \IteratorAggregate
         $this->items = $items;
     }
 
-    public function has(string $label): bool
+    public function has($label)
     {
         return array_key_exists($label, $this->items);
     }
 
-    public function __get(string $label)
+    public function get($label)
     {
         if (false === $this->has($label)) {
             throw new ContainerItemNotFoundException($label);
         }
 
         return $this->items[$label];
+    }
+
+    public function __get($label)
+    {
+        return $this->get($label);
     }
 
     public function all(): array

@@ -2,7 +2,9 @@
 
 namespace Bauhaus\Container;
 
-class ContainerItemNotFoundException extends ContainerItemException
+use Interop\Container\Exception\NotFoundException;
+
+class ContainerItemNotFoundException extends ContainerItemException implements NotFoundException
 {
     protected function messageTemplate(): string
     {
