@@ -8,10 +8,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->container = new Container($this->readableContainerItems());
+        $this->container = new Container($this->containerItems());
     }
 
-    protected function readableContainerItems()
+    protected function containerItems()
     {
         return [
             'pokemon' => 'Charmander',
@@ -42,7 +42,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     public function labelsAndTheirExistence()
     {
-        foreach (array_keys($this->readableContainerItems()) as $label) {
+        foreach (array_keys($this->containerItems()) as $label) {
             yield [$label, true];
         }
 
@@ -55,7 +55,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndValuesOfItems
      */
-    public function retrieveTheValueOfAnItemByItsLabel($label, $expectedValue)
+    public function retrieveValueOfAnItemByItsLabel($label, $expectedValue)
     {
         $this->assertEquals($expectedValue, $this->container->get($label));
     }
@@ -64,14 +64,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndValuesOfItems
      */
-    public function retrieveTheValueOfAnItemByItsLabelUsingMagicMethod($label, $expectedValue)
+    public function retrieveValueOfAnItemByItsLabelUsingMagicMethod($label, $expectedValue)
     {
         $this->assertEquals($expectedValue, $this->container->$label);
     }
 
     public function labelsAndValuesOfItems()
     {
-        foreach ($this->readableContainerItems() as $label => $value) {
+        foreach ($this->containerItems() as $label => $value) {
             yield [$label, $value];
         }
     }
@@ -81,7 +81,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function retrieveAllItemsWhenCallingTheMethodAll()
     {
-        $expectedItems = $this->readableContainerItems();
+        $expectedItems = $this->containerItems();
 
         $this->assertEquals($expectedItems, $this->container->all());
     }
@@ -96,7 +96,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             $outcome[$label] = $value;
         }
 
-        $this->assertEquals($this->readableContainerItems(), $outcome);
+        $this->assertEquals($this->containerItems(), $outcome);
     }
 
     /**
