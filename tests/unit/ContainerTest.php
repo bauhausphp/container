@@ -88,6 +88,16 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     */
+    public function canBeConvertedToArray()
+    {
+        $expectedItems = $this->containerItems();
+
+        $this->assertEquals($expectedItems, $this->container->toArray());
+    }
+
+    /**
+     * @test
      * @expectedException Bauhaus\Container\ItemNotFoundException
      * @expectedExceptionMessage No item 'nonExistingLabel' was found in container
      */

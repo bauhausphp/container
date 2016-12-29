@@ -36,4 +36,9 @@ class Container implements ContainerInterface
     {
         return $this->items;
     }
+
+    public function toArray(): array
+    {
+        return $this->items();
+    }
 }
