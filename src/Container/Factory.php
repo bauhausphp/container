@@ -2,12 +2,15 @@
 
 namespace Bauhaus\Container;
 
-use Bauhaus\Container;
+use Bauhaus\ContainerInterface;
 
 class Factory
 {
-    public function containerWithItemAdded(Container $container, string $label, $value): Container
-    {
+    public function containerWithItemAdded(
+        ContainerInterface $container,
+        string $label,
+        $value
+    ): ContainerInterface {
         if ($container->has($label)) {
             throw new ItemAlreadyExistsException($label);
         }
@@ -15,6 +18,15 @@ class Factory
         $items = $container->items();
         $items[$label] = $value;
 
-        return new Container($items);
+        return $this->createContainer($container, $items);
+    }
+
+    protected function createContainer(
+        ContainerInterface $container,
+        array $items
+    ): ContainerInterface {
+        $completeClassName = get_class($container);
+
+        return new $completeClassName($items);
     }
 }
