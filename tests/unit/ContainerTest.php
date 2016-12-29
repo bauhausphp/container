@@ -88,19 +88,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     */
-    public function retrieveAllItemsWhenIteratingIt()
-    {
-        $outcome = [];
-        foreach ($this->container as $label => $value) {
-            $outcome[$label] = $value;
-        }
-
-        $this->assertEquals($this->containerItems(), $outcome);
-    }
-
-    /**
-     * @test
      * @expectedException Bauhaus\Container\ItemNotFoundException
      * @expectedExceptionMessage No item 'nonExistingLabel' was found in container
      */

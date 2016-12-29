@@ -4,7 +4,7 @@ namespace Bauhaus;
 
 use Interop\Container\ContainerInterface as IteropContainerInterface;
 
-interface ContainerInterface extends IteropContainerInterface, \IteratorAggregate
+interface ContainerInterface extends IteropContainerInterface
 {
     public function has($label);
     public function get($label);
