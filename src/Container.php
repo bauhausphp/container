@@ -11,7 +11,7 @@ class Container implements Readable, \IteratorAggregate
         $this->items = $items;
     }
 
-    public function has($label)
+    final public function has($label)
     {
         return array_key_exists($label, $this->items);
     }
@@ -25,7 +25,7 @@ class Container implements Readable, \IteratorAggregate
         return $this->items[$label];
     }
 
-    public function __get($label)
+    final public function __get($label)
     {
         return $this->get($label);
     }
@@ -35,7 +35,7 @@ class Container implements Readable, \IteratorAggregate
         return $this->items;
     }
 
-    public function getIterator()
+    final public function getIterator()
     {
         return new \ArrayIterator($this->items);
     }
