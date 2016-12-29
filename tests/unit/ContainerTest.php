@@ -79,24 +79,21 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function retrieveAllItemsWhenCallingTheMethodAll()
+    public function retrieveAllItemsWhenCallingTheMethodItems()
     {
         $expectedItems = $this->containerItems();
 
-        $this->assertEquals($expectedItems, $this->container->all());
+        $this->assertEquals($expectedItems, $this->container->items());
     }
 
     /**
      * @test
      */
-    public function retrieveAllItemsWhenIteratingIt()
+    public function canBeConvertedToArray()
     {
-        $outcome = [];
-        foreach ($this->container as $label => $value) {
-            $outcome[$label] = $value;
-        }
+        $expectedItems = $this->containerItems();
 
-        $this->assertEquals($this->containerItems(), $outcome);
+        $this->assertEquals($expectedItems, $this->container->toArray());
     }
 
     /**

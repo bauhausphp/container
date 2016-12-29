@@ -32,13 +32,13 @@ class Container implements ContainerInterface
         return $this->get($label);
     }
 
-    public function all(): array
+    final public function items(): array
     {
         return $this->items;
     }
 
-    final public function getIterator()
+    public function toArray(): array
     {
-        return new \ArrayIterator($this->all());
+        return $this->items();
     }
 }
