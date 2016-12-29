@@ -2,7 +2,9 @@
 
 namespace Bauhaus\Container;
 
-class Container implements Readable, \IteratorAggregate
+use Interop\Container\ContainerInterface;
+
+class Container implements ContainerInterface
 {
     private $items = [];
 

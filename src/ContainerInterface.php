@@ -2,9 +2,9 @@
 
 namespace Bauhaus\Container;
 
-use Interop\Container\ContainerInterface;
+use Interop\Container\IteropContainerInterface;
 
-interface Readable extends ContainerInterface
+interface ContainerInterface extends IteropContainerInterface, \IteratorAggregate
 {
     public function has($label);
     public function get($label);
