@@ -39,6 +39,6 @@ class Container implements ContainerInterface
 
     final public function getIterator()
     {
-        return new \ArrayIterator($this->items);
+        return new \ArrayIterator($this->all());
     }
 }
