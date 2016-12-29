@@ -102,7 +102,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @expectedException Bauhaus\Container\ItemNotFoundException
-     * @expectedExceptionMessage No item labeled as 'nonExistingLabel' was found in this container
+     * @expectedExceptionMessage No item 'nonExistingLabel' was found in container
      */
     public function exceptionOccursWhenTryToRetriveAValueByNonExistingLabel()
     {

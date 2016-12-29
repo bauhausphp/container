@@ -8,6 +8,6 @@ class ItemNotFoundException extends ItemException implements IteropNotFoundExcep
 {
     protected function message(): string
     {
-        return "No item labeled as '{$this->label()}' was found in container";
+        return "No item '{$this->label()}' was found in container";
     }
 }
