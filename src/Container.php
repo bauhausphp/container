@@ -1,8 +1,10 @@
 <?php
 
-namespace Bauhaus\Container;
+namespace Bauhaus;
 
-class Container implements Readable, \IteratorAggregate
+use Bauhaus\Container\ItemNotFoundException;
+
+class Container implements ContainerInterface
 {
     private $items = [];
 
@@ -11,7 +13,7 @@ class Container implements Readable, \IteratorAggregate
         $this->items = $items;
     }
 
-    public function has($label)
+    final public function has($label)
     {
         return array_key_exists($label, $this->items);
     }
@@ -19,13 +21,13 @@ class Container implements Readable, \IteratorAggregate
     public function get($label)
     {
         if (false === $this->has($label)) {
-            throw new ContainerItemNotFoundException($label);
+            throw new ItemNotFoundException($label);
         }
 
         return $this->items[$label];
     }
 
-    public function __get($label)
+    final public function __get($label)
     {
         return $this->get($label);
     }
@@ -35,8 +37,8 @@ class Container implements Readable, \IteratorAggregate
         return $this->items;
     }
 
-    public function getIterator()
+    final public function getIterator()
     {
-        return new \ArrayIterator($this->items);
+        return new \ArrayIterator($this->all());
     }
 }
