@@ -32,7 +32,7 @@ class Container implements ContainerInterface
         return $this->get($label);
     }
 
-    public function all(): array
+    final public function items(): array
     {
         return $this->items;
     }

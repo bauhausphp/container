@@ -79,11 +79,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function retrieveAllItemsWhenCallingTheMethodAll()
+    public function retrieveAllItemsWhenCallingTheMethodItems()
     {
         $expectedItems = $this->containerItems();
 
-        $this->assertEquals($expectedItems, $this->container->all());
+        $this->assertEquals($expectedItems, $this->container->items());
     }
 
     /**

@@ -25,7 +25,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $newItemLabel = 'music';
         $newItemValue = 'right now';
-        $expectedItems = array_merge($this->container->all(), [
+        $expectedItems = array_merge($this->container->items(), [
             $newItemLabel => $newItemValue,
         ]);
 
@@ -36,7 +36,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertNotSame($this->container, $newContainer);
-        $this->assertEquals($expectedItems, $newContainer->all());
+        $this->assertEquals($expectedItems, $newContainer->items());
     }
 
     /**

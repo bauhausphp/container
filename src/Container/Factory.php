@@ -12,7 +12,7 @@ class Factory
             throw new ItemAlreadyExistsException($label);
         }
 
-        $items = $container->all();
+        $items = $container->items();
         $items[$label] = $value;
 
         return new Container($items);
