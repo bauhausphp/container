@@ -1,8 +1,8 @@
 <?php
 
-namespace Bauhaus\Container;
+namespace Bauhaus;
 
-use Interop\Container\IteropContainerInterface;
+use Interop\Container\ContainerInterface as IteropContainerInterface;
 
 interface ContainerInterface extends IteropContainerInterface, \IteratorAggregate
 {

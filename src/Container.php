@@ -1,8 +1,8 @@
 <?php
 
-namespace Bauhaus\Container;
+namespace Bauhaus;
 
-use Interop\Container\ContainerInterface;
+use Bauhaus\Container\ItemNotFoundException;
 
 class Container implements ContainerInterface
 {
@@ -21,7 +21,7 @@ class Container implements ContainerInterface
     public function get($label)
     {
         if (false === $this->has($label)) {
-            throw new ContainerItemNotFoundException($label);
+            throw new ItemNotFoundException($label);
         }
 
         return $this->items[$label];

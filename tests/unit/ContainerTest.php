@@ -1,6 +1,6 @@
 <?php
 
-namespace Bauhaus\Container;
+namespace Bauhaus;
 
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
@@ -101,7 +101,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException Bauhaus\Container\ContainerItemNotFoundException
+     * @expectedException Bauhaus\Container\ItemNotFoundException
      * @expectedExceptionMessage No item labeled as 'nonExistingLabel' was found in this container
      */
     public function exceptionOccursWhenTryToRetriveAValueByNonExistingLabel()
