@@ -6,10 +6,19 @@ use Interop\Container\Exception\ContainerException as IteropContainerException;
 
 abstract class ItemException extends \Exception implements IteropContainerException
 {
+    private $label = null;
+
     public function __construct(string $label)
     {
-        parent::__construct(sprintf($this->messageTemplate(), $label));
+        $this->label = $label;
+
+        parent::__construct($this->message());
     }
 
-    abstract protected function messageTemplate(): string;
+    final public function label(): string
+    {
+        return $this->label;
+    }
+
+    abstract protected function message(): string;
 }

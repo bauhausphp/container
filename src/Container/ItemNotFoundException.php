@@ -6,8 +6,8 @@ use Interop\Container\Exception\NotFoundException as IteropNotFoundException;
 
 class ItemNotFoundException extends ItemException implements IteropNotFoundException
 {
-    protected function messageTemplate(): string
+    protected function message(): string
     {
-        return "No item labeled as '%s' was found in this container";
+        return "No item labeled as '{$this->label()}' was found in container";
     }
 }
