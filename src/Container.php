@@ -37,8 +37,8 @@ class Container implements ContainerInterface
         return $this->items;
     }
 
-    public function toArray(): array
+    public function asArray(): array
     {
-        return $this->items();
+        throw new \RuntimeException('Method asArray not implemented');
     }
 }

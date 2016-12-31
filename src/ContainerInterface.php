@@ -10,5 +10,5 @@ interface ContainerInterface extends IteropContainerInterface
     public function get($label);
     public function __get($label);
     public function items(): array;
-    public function toArray(): array;
+    public function asArray(): array;
 }
