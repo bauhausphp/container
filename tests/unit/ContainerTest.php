@@ -88,12 +88,12 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @expectedException RuntimeException
+     * @expectedExceptionMessage Method asArray not implemented
      */
     public function canBeConvertedToArray()
     {
-        $expectedItems = $this->containerItems();
-
-        $this->assertEquals($expectedItems, $this->container->toArray());
+        $this->container->asArray();
     }
 
     /**
