@@ -18,10 +18,10 @@ class Factory
         $items = $container->items();
         $items[$label] = $value;
 
-        return $this->createContainer($container, $items);
+        return $this->createNewContainer($container, $items);
     }
 
-    protected function createContainer(
+    private function createNewContainer(
         ContainerInterface $container,
         array $items
     ): ContainerInterface {
