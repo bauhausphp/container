@@ -50,4 +50,36 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->factory->containerWithItemAdded($this->container, 'pokemon', 'pikachu');
     }
+
+    /**
+     * @test
+     */
+    public function aContainerWithItemReplacedIsReturnedGivenAContainerAndAnItem()
+    {
+        $itemLabel = 'pokemon';
+        $itemNewValue = 'pikachu';
+
+        $expectedInstanceOf = get_class($this->container);
+        $expectedItems = [$itemLabel => $itemNewValue];
+
+        $newContainer = $this->factory->containerWithItemReplaced(
+            $this->container,
+            $itemLabel,
+            $itemNewValue
+        );
+
+        $this->assertNotSame($this->container, $newContainer);
+        $this->assertEquals($expectedItems, $newContainer->items());
+        $this->assertInstanceOf($expectedInstanceOf, $newContainer);
+    }
+
+    /**
+     * @test
+     * @expectedException Bauhaus\Container\ItemNotFoundException
+     * @expectedExceptionMessage No item 'wrongLabel' was found in container
+     */
+    public function exceptionOccursWhenTryToReplaceAnItemThatDoesNotExist()
+    {
+        $this->factory->containerWithItemReplaced($this->container, 'wrongLabel', 'value');
+    }
 }
