@@ -13,7 +13,7 @@ class Container implements ContainerInterface
         $this->items = $items;
     }
 
-    final public function has($label)
+    public function has($label)
     {
         return array_key_exists($label, $this->items);
     }
