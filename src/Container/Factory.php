@@ -6,56 +6,53 @@ use Bauhaus\ContainerInterface;
 
 class Factory
 {
-    public function containerWithItemAdded(
-        ContainerInterface $container,
-        string $label,
-        $value
-    ): ContainerInterface {
-        if ($container->has($label)) {
+    private $container = null;
+
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
+    public function containerWithItemAdded(string $label, $value): ContainerInterface
+    {
+        if ($this->container->has($label)) {
             throw new ItemAlreadyExistsException($label);
         }
 
-        $items = $container->items();
+        $items = $this->container->items();
         $items[$label] = $value;
 
-        return $this->createNewContainer($container, $items);
+        return $this->createNewContainer($items);
     }
 
-    public function containerWithItemReplaced(
-        ContainerInterface $container,
-        string $label,
-        $value
-    ): ContainerInterface {
-        if (false === $container->has($label)) {
+    public function containerWithItemReplaced(string $label, $value): ContainerInterface
+    {
+        if (false === $this->container->has($label)) {
             throw new ItemNotFoundException($label);
         }
 
-        $items = $container->items();
+        $items = $this->container->items();
         $items[$label] = $value;
 
-        return $this->createNewContainer($container, $items);
+        return $this->createNewContainer($items);
     }
 
-    public function containerWithoutItem(
-        ContainerInterface $container,
-        string $label
-    ): ContainerInterface {
-        if (false === $container->has($label)) {
+    public function containerWithoutItem(string $label): ContainerInterface
+    {
+        if (false === $this->container->has($label)) {
             throw new ItemNotFoundException($label);
         }
 
-        $items = $container->items();
+        $items = $this->container->items();
         unset($items[$label]);
 
-        return $this->createNewContainer($container, $items);
+        return $this->createNewContainer($items);
     }
 
-    private function createNewContainer(
-        ContainerInterface $container,
-        array $items
-    ): ContainerInterface {
-        $completeClassName = get_class($container);
+    private function createNewContainer(array $items): ContainerInterface
+    {
+        $containerClassName = get_class($this->container);
 
-        return new $completeClassName($items);
+        return new $containerClassName($items);
     }
 }
