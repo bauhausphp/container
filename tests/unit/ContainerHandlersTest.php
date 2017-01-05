@@ -26,4 +26,14 @@ class ContainerHandlersTest extends \PHPUnit_Framework_TestCase
             ]
         );
     }
+
+    /**
+     * @test
+     */
+    public function returnCustomizedValueWhenItemIsNotFound()
+    {
+        $container = new ContainerThatReturnsNullWhenItemIsNotFound();
+
+        $this->assertNull($container->get('some-label'));
+    }
 }

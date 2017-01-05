@@ -29,7 +29,7 @@ class Container implements ContainerInterface
     public function get($label)
     {
         if (false === $this->has($label)) {
-            throw new ItemNotFoundException($label);
+            return $this->itemNotFoundHandler($label);
         }
 
         return $this->items[$label];
@@ -70,5 +70,15 @@ class Container implements ContainerInterface
     protected function itemCanNotBeContainedExceptionMessage(string $label): string
     {
         return "The item '$label' can not be contained in this container";
+    }
+
+    /**
+     * This method is used to control what happens when try to retrieve an item
+     * that does not exist: an exception can be throwed or a default value can
+     * be returned.
+     */
+    protected function itemNotFoundHandler(string $label)
+    {
+        throw new ItemNotFoundException($label);
     }
 }
