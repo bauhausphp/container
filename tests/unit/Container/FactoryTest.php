@@ -3,6 +3,7 @@
 namespace Bauhaus\Container;
 
 use Bauhaus\Container;
+use Bauhaus\Container\ContainerExtended;
 
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,18 +24,14 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function aContainerWithItemAddedIsReturnedGivenAContainerAndAnItem()
     {
-        $newItemLabel = 'music';
-        $newItemValue = 'right now';
-        $expectedItems = array_merge($this->container->items(), [
-            $newItemLabel => $newItemValue,
-        ]);
-        $expectedInstanceOf = get_class($this->container);
-
-        $newContainer = $this->factory->containerWithItemAdded($newItemLabel, $newItemValue);
+        $newContainer = $this->factory->containerWithItemAdded('music', 'right now');
 
         $this->assertNotSame($this->container, $newContainer);
-        $this->assertEquals($expectedItems, $newContainer->items());
-        $this->assertInstanceOf($expectedInstanceOf, $newContainer);
+        $this->assertInstanceOf('Bauhaus\Container\ContainerExtended', $newContainer);
+        $this->assertEquals(
+            array_merge($this->container->items(), ['music' => 'right now']),
+            $newContainer->items()
+        );
     }
 
     /**
@@ -52,17 +49,11 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function aContainerWithItemReplacedIsReturnedGivenAContainerAndAnItem()
     {
-        $itemLabel = 'pokemon';
-        $itemNewValue = 'pikachu';
-
-        $expectedInstanceOf = get_class($this->container);
-        $expectedItems = [$itemLabel => $itemNewValue];
-
-        $newContainer = $this->factory->containerWithItemReplaced($itemLabel, $itemNewValue);
+        $newContainer = $this->factory->containerWithItemReplaced('pokemon', 'pickachu');
 
         $this->assertNotSame($this->container, $newContainer);
-        $this->assertEquals($expectedItems, $newContainer->items());
-        $this->assertInstanceOf($expectedInstanceOf, $newContainer);
+        $this->assertInstanceOf('Bauhaus\Container\ContainerExtended', $newContainer);
+        $this->assertEquals(['pokemon' => 'pickachu'], $newContainer->items());
     }
 
     /**
@@ -80,13 +71,11 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function aContainerWithoutAnItemGivenItsLabel()
     {
-        $expectedInstanceOf = get_class($this->container);
-
         $newContainer = $this->factory->containerWithoutItem('pokemon');
 
         $this->assertNotSame($this->container, $newContainer);
+        $this->assertInstanceOf('Bauhaus\Container\ContainerExtended', $newContainer);
         $this->assertEquals([], $newContainer->items());
-        $this->assertInstanceOf($expectedInstanceOf, $newContainer);
     }
 
     /**
