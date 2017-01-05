@@ -11,11 +11,11 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->factory = new Factory();
-
         $this->container = new ContainerExtended([
             'pokemon' => 'charmander',
         ]);
+
+        $this->factory = new Factory($this->container);
     }
 
     /**
@@ -30,11 +30,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         ]);
         $expectedInstanceOf = get_class($this->container);
 
-        $newContainer = $this->factory->containerWithItemAdded(
-            $this->container,
-            $newItemLabel,
-            $newItemValue
-        );
+        $newContainer = $this->factory->containerWithItemAdded($newItemLabel, $newItemValue);
 
         $this->assertNotSame($this->container, $newContainer);
         $this->assertEquals($expectedItems, $newContainer->items());
@@ -48,7 +44,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function exceptionOccursWhenTryToAddItemWithLabelAlreadyTaken()
     {
-        $this->factory->containerWithItemAdded($this->container, 'pokemon', 'pikachu');
+        $this->factory->containerWithItemAdded('pokemon', 'pikachu');
     }
 
     /**
@@ -62,11 +58,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $expectedInstanceOf = get_class($this->container);
         $expectedItems = [$itemLabel => $itemNewValue];
 
-        $newContainer = $this->factory->containerWithItemReplaced(
-            $this->container,
-            $itemLabel,
-            $itemNewValue
-        );
+        $newContainer = $this->factory->containerWithItemReplaced($itemLabel, $itemNewValue);
 
         $this->assertNotSame($this->container, $newContainer);
         $this->assertEquals($expectedItems, $newContainer->items());
@@ -80,7 +72,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function exceptionOccursWhenTryToReplaceAnItemThatDoesNotExist()
     {
-        $this->factory->containerWithItemReplaced($this->container, 'wrongLabel', 'value');
+        $this->factory->containerWithItemReplaced('wrongLabel', 'value');
     }
 
     /**
@@ -90,10 +82,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $expectedInstanceOf = get_class($this->container);
 
-        $newContainer = $this->factory->containerWithoutItem(
-            $this->container,
-            'pokemon'
-        );
+        $newContainer = $this->factory->containerWithoutItem('pokemon');
 
         $this->assertNotSame($this->container, $newContainer);
         $this->assertEquals([], $newContainer->items());
@@ -107,6 +96,6 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function exceptionOccursWhenTryToRemoveAnItemThatDoesNotExist()
     {
-        $this->factory->containerWithoutItem($this->container, 'wrongLabel');
+        $this->factory->containerWithoutItem('wrongLabel');
     }
 }
