@@ -35,7 +35,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndTheirExistence
      */
-    public function verifyThatAnItemExistsByItsLabel($label, $exists)
+    public function verifyThatAnItemExistsByItsLabel(string $label, bool $exists)
     {
         $this->assertTrue($this->container->has($label) === $exists);
     }
@@ -55,7 +55,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndValuesOfItems
      */
-    public function retrieveValueOfAnItemByItsLabel($label, $expectedValue)
+    public function retrieveValueOfAnItemByItsLabel(string $label, $expectedValue)
     {
         $this->assertEquals($expectedValue, $this->container->get($label));
     }
@@ -64,7 +64,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider labelsAndValuesOfItems
      */
-    public function retrieveValueOfAnItemByItsLabelUsingMagicMethod($label, $expectedValue)
+    public function retrieveValueOfAnItemByItsLabelUsingMagicMethod(string $label, $expectedValue)
     {
         $this->assertEquals($expectedValue, $this->container->$label);
     }
